@@ -14,6 +14,23 @@
   <meta name="apple-mobile-web-app-title" content="モンファク">
   <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png">
+  <!-- 端末上で発生したエラーを画面に表示（iOS等の原因特定用）-->
+  <script>
+    window.__mfErr = function (msg) {
+      try {
+        var d = document.getElementById("mf-err");
+        if (!d) { d = document.createElement("div"); d.id = "mf-err"; d.style.cssText = "position:fixed;left:0;right:0;bottom:0;z-index:99999;background:#b00020;color:#fff;font:12px/1.5 monospace;padding:10px;white-space:pre-wrap;max-height:45vh;overflow:auto"; (document.body || document.documentElement).appendChild(d); d.onclick = function () { d.remove(); }; }
+        d.textContent = "⚠ " + msg + "\n(タップで閉じる)";
+      } catch (e) {}
+    };
+    window.addEventListener("error", function (e) {
+      var where = e.filename ? (" @ " + e.filename.split("/").pop() + ":" + e.lineno) : "";
+      window.__mfErr((e.message || (e.target && e.target.src ? "読み込み失敗: " + e.target.src.split("/").pop() : "error")) + where);
+    }, true);
+    window.addEventListener("unhandledrejection", function (e) {
+      window.__mfErr("promise: " + ((e.reason && e.reason.message) || e.reason || "rejected"));
+    });
+  </script>
 </head>
 <body>
   <div id="app"></div>

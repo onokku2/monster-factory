@@ -1,6 +1,6 @@
 /* sw.js — アプリシェルをバージョン付きキャッシュにプリキャッシュし、オフライン起動を実現。
  * fetch は cache-first ＋ 取得後にキャッシュ更新。activate で旧キャッシュ削除。 */
-const CACHE = "monfac-v4";
+const CACHE = "monfac-v5";
 const SHELL = [
   "./", "index.html", "manifest.webmanifest", "css/style.css",
   "js/rng.js", "js/config.js", "js/parts.js", "js/names.js", "js/sprite.js",

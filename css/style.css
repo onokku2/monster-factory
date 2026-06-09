@@ -98,7 +98,7 @@ h2{margin:14px 0 4px;font-size:22px} h3{margin:14px 0 6px;font-size:16px;color:v
 .bt-unit{position:absolute;left:10px;right:10px;display:flex;gap:8px;pointer-events:none}
 .bt-unit.enemy{top:8px;justify-content:space-between;align-items:flex-start}
 .bt-unit.player{bottom:8px;flex-direction:row-reverse;justify-content:space-between;align-items:flex-end}
-.bt-info{width:48%;max-width:240px;background:rgba(10,8,22,.7);border:1px solid var(--line);border-radius:10px;padding:6px 8px;backdrop-filter:blur(2px)}
+.bt-info{width:48%;max-width:240px;background:rgba(10,8,22,.7);border:1px solid var(--line);border-radius:10px;padding:6px 8px;-webkit-backdrop-filter:blur(2px);backdrop-filter:blur(2px)}
 .bi-name{font-weight:800;font-size:13px;display:flex;gap:5px;align-items:center}
 .bi-bar{height:10px;background:#120e26;border-radius:6px;margin-top:4px;position:relative;overflow:hidden;border:1px solid var(--line)}
 .bi-bar i{position:absolute;left:0;top:0;height:100%;border-radius:6px}

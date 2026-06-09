@@ -52,7 +52,8 @@
   }
 
   // ---- パレット（系統hue × レアリティ）----
-  function hsl(h, s, l) { return "hsl(" + ((h % 360 + 360) % 360) + " " + clamp(s, 0, 100) + "% " + clamp(l, 0, 100) + "%)"; }
+  // カンマ区切りhsl（Safari全バージョン対応。スペース区切りはiOS15未満で無効）
+  function hsl(h, s, l) { return "hsl(" + ((h % 360 + 360) % 360) + "," + clamp(s, 0, 100) + "%," + clamp(l, 0, 100) + "%)"; }
   function palette(seedNum, familyId, rarity, shiny) {
     var fam = MF.FAMILY_BY_ID[familyId] || MF.FAMILIES[0];
     var r = new MF.RNG(seedNum);

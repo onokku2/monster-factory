@@ -36,7 +36,11 @@
 
   // ---------- SFX（WebAudioで合成、アセット不要）----------
   var actx = null;
-  function ac() { if (!actx) { try { actx = new (window.AudioContext || window.webkitAudioContext)(); } catch (e) {} } return actx; }
+  function ac() {
+    if (!actx) { try { actx = new (window.AudioContext || window.webkitAudioContext)(); } catch (e) {} }
+    if (actx && actx.state === "suspended") { try { actx.resume(); } catch (e) {} } // iOSはジェスチャ後にresume必要
+    return actx;
+  }
   function beep(type) {
     if (!G.settings.sfx) return; var c = ac(); if (!c) return;
     var o = c.createOscillator(), g = c.createGain(); o.connect(g); g.connect(c.destination);
@@ -130,7 +134,7 @@
       var v = aff[a] || 0;
       var pct = Math.round(MF.clamp(v / MF.AFF_SOFT_CAP, 0, 1) * 100);
       var bar = el("div", { class: "abar" }, [
-        el("i", { style: "width:" + pct + "%;background:hsl(" + fam.hue[0] + " 70% 55%)" }),
+        el("i", { style: "width:" + pct + "%;background:hsl(" + fam.hue[0] + ",70%,55%)" }),
         el("u", { class: "mk" + (v >= 25 ? " on" : ""), style: "left:" + (25 / MF.AFF_SOFT_CAP * 100) + "%" }),
         el("u", { class: "mk" + (v >= 45 ? " on" : ""), style: "left:" + (45 / MF.AFF_SOFT_CAP * 100) + "%" }),
         el("u", { class: "mk sup" + (v >= 75 ? " on" : ""), style: "left:" + (75 / MF.AFF_SOFT_CAP * 100) + "%" })
