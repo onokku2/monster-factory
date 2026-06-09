@@ -3,6 +3,16 @@
 ドット絵モンスターを **集める・組む・鍛える・戦う** 育成バトルゲーム。
 ビルド不要・完全オフライン。`PLAY.bat` をダブルクリック（または `index.html` をブラウザで開く）するだけで遊べます。
 
+## 🌐 公開URL（恒久・本番）
+**https://onokku2.github.io/monster-factory/**
+GitHub Pages で常時稼働。スマホでこのURLを開き「ホーム画面に追加」でアプリ化できます。
+
+### 自動デプロイ
+リポジトリ `github.com/onokku2/monster-factory`。`main` に push すると GitHub Actions（`.github/workflows/pages.yml`）が自動でビルド＆公開します。
+```
+git add -A && git commit -m "update" && git push   # → 数十秒後に上記URLへ反映
+```
+
 ## 📲 スマホアプリ（PWA）として使う
 
 ### かんたん公開（アカウント不要・自動）
