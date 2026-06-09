@@ -1,0 +1,8 @@
+# deploy tooling (51MB cloudflared binary — do not commit)
+.deploy/
+
+# OS / editor
+.DS_Store
+Thumbs.db
+*.log
+node_modules/
