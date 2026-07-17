@@ -1,6 +1,6 @@
 /* sw.js — アプリシェルをバージョン付きキャッシュにプリキャッシュし、オフライン起動を実現。
  * fetch は cache-first ＋ 取得後にキャッシュ更新。activate で旧キャッシュ削除。 */
-const CACHE = "monfac-v5";
+const CACHE = "monfac-v6"; // settings未初期化クラッシュ修正（新規プレイヤーが起動できなかった）
 const SHELL = [
   "./", "index.html", "manifest.webmanifest", "css/style.css",
   "js/rng.js", "js/config.js", "js/parts.js", "js/names.js", "js/sprite.js",

@@ -21,7 +21,7 @@
     return n;
   }
   function clear(n) { while (n.firstChild) n.removeChild(n.firstChild); }
-  function wait(ms) { return new Promise(function (r) { setTimeout(r, ms / (G.settings.battleSpeed || 1)); }); }
+  function wait(ms) { return new Promise(function (r) { setTimeout(r, ms / ((G.settings && G.settings.battleSpeed) || 1)); }); }
   function rankBadge(rank) { return el("span", { class: "badge", style: "background:" + MF.RANK_COLOR[rank] }, rank); }
   function famTag(famId) { var f = MF.FAMILY_BY_ID[famId]; return el("span", { class: "fam" }, f.emoji + f.jp); }
   function rarTag(r) { return el("span", { class: "rar", style: "color:" + MF.RARITY_COLOR[r] }, MF.RARITY[r]); }
@@ -42,7 +42,7 @@
     return actx;
   }
   function beep(type) {
-    if (!G.settings.sfx) return; var c = ac(); if (!c) return;
+    if (!G.settings || !G.settings.sfx) return; var c = ac(); if (!c) return; // settings未初期化でも音を鳴らさないだけで落とさない
     var o = c.createOscillator(), g = c.createGain(); o.connect(g); g.connect(c.destination);
     var t = c.currentTime, conf = {
       hit: [220, "square", 0.09], crit: [520, "sawtooth", 0.16], heal: [660, "sine", 0.18],

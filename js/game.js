@@ -24,6 +24,10 @@
     return { wins: 0, losses: 0, battles: 0, builtCount: 0, trainCount: 0, dropCount: 0, pvpWins: 0, pvpBattles: 0, superUsed: 0, bestRarity: 0, evolveCount: 0, maxLevel: 1, stagesCleared: 0, fuseCount: 0 };
   }
   function freshSettings() { return { battleSpeed: 1, sfx: true }; }
+  // セーブ読込/新規開始の前（タイトル画面）でもSFXや速度設定を参照できるよう、起動時から実体を持たせる。
+  // nullのままだと「はじめる」のクリック音で新規プレイヤーが即クラッシュする
+  Game.settings = freshSettings();
+  Game.stats = freshStats();
 
   // ---- 初期化 ----
   // 戻り値: 'loaded'（続き）/ 'needstarter'（新規＝スターター選択へ）
